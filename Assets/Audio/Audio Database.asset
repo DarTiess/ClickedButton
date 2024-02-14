@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4645132edefd4c74968a0c941a98fb89, type: 3}
+  m_Name: Audio Database
+  m_EditorClassIdentifier: 
+  _items:
+  - Clip: {fileID: 8300000, guid: ac8a5fea375879c47ba5dc2e42d7aab7, type: 3}
+    Key: Backgriund
+    FolderPath: Audio\
+    Name: guitarloop.mp3
+    Preload: 1
+    _id: 0759a273-e142-4ce2-8332-4ee0e0ca7e0c
+  - Clip: {fileID: 8300000, guid: c5a17d5124044ec4eb5ec9bb5730a425, type: 3}
+    Key: Click
+    FolderPath: Audio\
+    Name: buttonclick04.mp3
+    Preload: 1
+    _id: 8c1787f1-5aee-4559-b805-32c65b00e999

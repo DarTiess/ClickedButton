@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8033750b781c4482b8afb057efb27eff, type: 3}
-  m_Name: AudioManagementSettings
+  m_Script: {fileID: 11500000, guid: fc3d28b8a9e74894a20779bb426d549b, type: 3}
+  m_Name: SceneConfig
   m_EditorClassIdentifier: 
-  _database: {fileID: 11400000, guid: b97a49331249674418ca1168f0e16c9b, type: 2}
+  _sceneNames:
+  - Main
+  - Scene01
+  - Scene02
