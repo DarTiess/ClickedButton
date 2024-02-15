@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditorInternal;
 using UnityEngine;
 
-namespace Infrastructure.Level.EventsBus
+namespace EventsBus
 {
     public class EventBus : IEventBus
     {

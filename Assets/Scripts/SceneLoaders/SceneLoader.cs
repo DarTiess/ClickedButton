@@ -1,40 +1,43 @@
 ﻿using System;
-using Infrastructure.Level.EventsBus;
-using Infrastructure.Level.EventsBus.Signals;
+using EventsBus;
+using EventsBus.Signals;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader: IDisposable
+namespace SceneLoaders
 {
-    private readonly IEventBus _eventBus;
-    private SceneConfig _sceneConfig;
-
-    public SceneLoader(IEventBus eventBus, SceneConfig sceneConfig)
+    public class SceneLoader: IDisposable
     {
-        _eventBus = eventBus;
-        _sceneConfig = sceneConfig;
-        _eventBus.Subscribe<NextLevel>(LoadNextLevel);
-        LoadLevel();
-    }
+        private readonly IEventBus _eventBus;
+        private SceneConfig _sceneConfig;
 
-    private void LoadLevel()
-    {
-        var nextScene = _sceneConfig.GetNextScene();
-        if (nextScene == SceneManager.GetActiveScene().name)
+        public SceneLoader(IEventBus eventBus, SceneConfig sceneConfig)
         {
-            nextScene = _sceneConfig.GetNextScene();
+            _eventBus = eventBus;
+            _sceneConfig = sceneConfig;
+            _eventBus.Subscribe<NextLevel>(LoadNextLevel);
+            LoadLevel();
         }
 
-        SceneManager.LoadSceneAsync(nextScene);
-    }
+        private void LoadLevel()
+        {
+            var nextScene = _sceneConfig.GetNextScene();
+            if (nextScene == SceneManager.GetActiveScene().name)
+            {
+                nextScene = _sceneConfig.GetNextScene();
+            }
 
-    private void LoadNextLevel(NextLevel obj)
-    {
-       LoadLevel();
-    }
+            SceneManager.LoadSceneAsync(nextScene);
+        }
+
+        private void LoadNextLevel(NextLevel obj)
+        {
+            LoadLevel();
+        }
 
     
-    public void Dispose()
-    {
-        _sceneConfig.Restart();
+        public void Dispose()
+        {
+            _sceneConfig.Restart();
+        }
     }
 }

@@ -1,25 +1,28 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Configs/Scene", fileName = "SceneConfig", order = 52)]
-public class SceneConfig : ScriptableObject
+namespace SceneLoaders
 {
-    [SerializeField] private List<string> _sceneNames;
-    private int _currentScene=0;
-
-
-    public string GetNextScene()
+    [CreateAssetMenu(menuName = "Configs/Scene", fileName = "SceneConfig", order = 52)]
+    public class SceneConfig : ScriptableObject
     {
-        _currentScene += 1;
-        if (_currentScene >= _sceneNames.Count)
+        [SerializeField] private List<string> _sceneNames;
+        private int _currentScene=0;
+
+
+        public string GetNextScene()
+        {
+            _currentScene += 1;
+            if (_currentScene >= _sceneNames.Count)
+            {
+                _currentScene = 0;
+            }
+            return _sceneNames[_currentScene];
+        }
+
+        public void Restart()
         {
             _currentScene = 0;
         }
-        return _sceneNames[_currentScene];
-    }
-
-    public void Restart()
-    {
-        _currentScene = 0;
     }
 }

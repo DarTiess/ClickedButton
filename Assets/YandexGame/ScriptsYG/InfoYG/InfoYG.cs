@@ -180,6 +180,26 @@ namespace YG
                     rank = 2,
                     score = 10,
                 }
+            },
+            new LBData
+            {
+                technoName = "LeaderBoard",
+                entries = "Test LeaderBoard\nName: time\n1. anonymous: 10\n2. Max: 15\n3. Maria: 23",
+                players = new LBPlayerData[6]
+                {
+                    new LBPlayerData { name = "anonymous", rank = 1, score = 7123, uniqueID = "789", photo = photoExample},
+                    new LBPlayerData { name = "Max", rank = 2, score = 15321, uniqueID = "987", photo = photoExample },
+                    new LBPlayerData { name = "Maria", rank = 3, score = 62000, uniqueID = "891", photo = photoExample },
+                    new LBPlayerData { name = "Player4", rank = 4, score = 122000, uniqueID = "321", photo = photoExample },
+                    new LBPlayerData { name = "Player this", rank = 5, score = 127000, uniqueID = "000", photo = photoExample },
+                    new LBPlayerData { name = "Player6", rank = 6, score = 340000, uniqueID = "321", photo = photoExample }
+                },
+                type = "numeric",
+                thisPlayer = new LBThisPlayerData
+                {
+                    rank = 2,
+                    score = 20,
+                }
             }
         };
 #endif

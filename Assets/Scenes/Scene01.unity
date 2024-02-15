@@ -152,18 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c9dff311caa5442bef05b219002fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yandexGamePrefab: {fileID: 561798623251495516, guid: 7107da6d1eb04fb4ba540dcb3dc90d16, type: 3}
-  _uiWindowPrefab: {fileID: 5684661903483078841, guid: eba714542c7e3364eb574881067dd23f, type: 3}
+  _buttonsWindowPrefab: {fileID: 5684661903483078841, guid: eba714542c7e3364eb574881067dd23f, type: 3}
   _addCoins: 10
-  _musicSourcePrefab: {fileID: 8279719634739706196, guid: 5a94e5197b2d54a43a54b0d1590aa5f9, type: 3}
-  _soundSourcePrefab: {fileID: 8542662702604131609, guid: 7b0f5fcb5f6b9e04f8a2bb5630209f65, type: 3}
-  _musicClip:
-    _id: 0759a273-e142-4ce2-8332-4ee0e0ca7e0c
-    _key: Backgriund
-  _soundClip:
-    _id: 8c1787f1-5aee-4559-b805-32c65b00e999
-    _key: Click
-  _sceneConfig: {fileID: 11400000, guid: 27cc2c02a71a55a4d8876e3ec6c6e81d, type: 2}
 --- !u!4 &141444081
 Transform:
   m_ObjectHideFlags: 0

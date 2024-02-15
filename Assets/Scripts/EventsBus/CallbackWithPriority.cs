@@ -1,4 +1,4 @@
-namespace Infrastructure.Level.EventsBus
+namespace EventsBus
 {
     public class CallbackWithPriority
     {

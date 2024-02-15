@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Level.EventsBus.Signals
+﻿namespace EventsBus.Signals
 {
     public class ClickedButton
     {

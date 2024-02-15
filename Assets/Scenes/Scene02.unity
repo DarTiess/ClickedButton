@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _adWindowPrefab: {fileID: 219547120744870408, guid: 8753f976e7da5824c91b6d7fc0ddbfe5, type: 3}
   _addCoins: 2
+  _imageConfig: {fileID: 11400000, guid: 43287295bd2c072428cb8b1bb6ef9bc8, type: 2}
 --- !u!4 &2096613485
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 using System;
 
-namespace Infrastructure.Level.EventsBus
+namespace EventsBus
 {
     public interface IEventBus
     {

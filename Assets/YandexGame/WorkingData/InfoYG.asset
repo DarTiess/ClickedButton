@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopes: 1
   playerPhotoSize: 0
-  autoGameReadyAPI: 0
+  autoGameReadyAPI: 1
   playerInfoSimulation:
     authorized: 1
     isMobile: 0
@@ -22,12 +22,12 @@ MonoBehaviour:
     name: Player this
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
-  AdWhenLoadingScene: 1
-  showFirstAd: 1
+  AdWhenLoadingScene: 0
+  showFirstAd: 0
   rewardedAfterClosing: 1
   adDisplayCalls: 0
   fullscreenAdInterval: 60
-  durationOfAdSimulation: 0.5
+  durationOfAdSimulation: 1
   loadAdWithDelaySimulation: 0
   testErrorOfRewardedAdsInEditor: 0
   saveCloud: 1
@@ -180,8 +180,49 @@ MonoBehaviour:
     thisPlayer:
       rank: 2
       score: 10
+  - technoName: LeaderBoard
+    entries: "Test LeaderBoard\nName: time\n1. \u0441\u043A\u0440\u044B\u0442: 10\n2.
+      Max: 15\n3. Maria: 23"
+    isDefault: 0
+    isInvertSortOrder: 0
+    decimalOffset: 0
+    type: numeric
+    players:
+    - rank: 1
+      name: anonymous
+      score: 5
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 789
+    - rank: 2
+      name: Max
+      score: 4
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 987
+    - rank: 3
+      name: Maria
+      score: 1
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 891
+    - rank: 4
+      name: Player4
+      score: 7
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 5
+      name: Player this
+      score: 8
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 000
+    - rank: 6
+      name: Player6
+      score: 9
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    thisPlayer:
+      rank: 2
+      score: 10
   LocalizationEnable: 1
-  callingLanguageCheck: 0
+  callingLanguageCheck: 1
   translateMethod: 0
   domainAutoLocalization: com
   CSVFileTranslate:
@@ -190,7 +231,7 @@ MonoBehaviour:
   languages:
     ru: 1
     en: 1
-    tr: 1
+    tr: 0
     az: 0
     be: 0
     he: 0
@@ -216,7 +257,8 @@ MonoBehaviour:
     de: 0
     hi: 0
   fonts:
-    defaultFont: []
+    defaultFont:
+    - {fileID: 12800000, guid: 82cc91725ab2f0c41920038a250d768b, type: 3}
     ru: []
     en: []
     tr: []

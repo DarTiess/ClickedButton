@@ -1,81 +1,89 @@
-﻿using System;
-using Infrastructure.Level.EventsBus;
-using Infrastructure.Level.EventsBus.Signals;
-using TMPro;
+﻿using EventsBus;
+using EventsBus.Signals;
+using LeaderBoard;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class ButtonsWindow : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Button _addButton;
-    [SerializeField] private Button _deleteButton;
-    [SerializeField] private Button _leaderBoardButton;
-    [SerializeField] private Button _soundButton;
-    [SerializeField] private Button _nextLevelButton;
-    [SerializeField] private TextMeshProUGUI _coinsText;
-
-    private IEventBus _eventBus;
-    private int _coins;
-    private int _addCoins;
-
-    private void Start()
+    public class ButtonsWindow : MonoBehaviour
     {
-        _addButton.onClick.AddListener(AddCoins);
-        _deleteButton.onClick.AddListener(DeleteCoins);
-        _leaderBoardButton.onClick.AddListener(ShowLeaderBoard);
-        _soundButton.onClick.AddListener(SwitchSound);
-        _nextLevelButton.onClick.AddListener(NextLevel);
-    }
+        [SerializeField] private Button _addButton;
+        [SerializeField] private Button _deleteButton;
+        [SerializeField] private Button _leaderBoardButton;
+        [SerializeField] private Button _soundButton;
+        [SerializeField] private Button _nextLevelButton;
+        [SerializeField] private Text _coinsText;
+        [SerializeField] private LeaderBoardView _leaderBoard;
 
-    private void OnDisable()
-    {
-        _addButton.onClick.RemoveListener(AddCoins);
-        _deleteButton.onClick.RemoveListener(DeleteCoins);
-        _leaderBoardButton.onClick.RemoveListener(ShowLeaderBoard);
-        _soundButton.onClick.RemoveListener(SwitchSound);
-        _nextLevelButton.onClick.RemoveListener(NextLevel);
-    }
+        private IEventBus _eventBus;
+        private int _coins;
+        private int _addCoins;
 
-    public void Initialize(IEventBus eventBus, int coins, int addCoins)
-    {
-        _eventBus = eventBus;
-        _coins = coins;
-        _addCoins = addCoins;
-        _coinsText.text = _coins.ToString();
-    }
+        private void Start()
+        {
+            _addButton.onClick.AddListener(AddCoins);
+            _deleteButton.onClick.AddListener(DeleteCoins);
+            _leaderBoardButton.onClick.AddListener(ShowLeaderBoard);
+            _soundButton.onClick.AddListener(SwitchSound);
+            _nextLevelButton.onClick.AddListener(NextLevel);
+            _leaderBoard.gameObject.SetActive(false);
+        }
 
-    private void NextLevel()
-    {
-        _eventBus.Invoke(new NextLevel());
-        _eventBus.Invoke(new ClickedButton());
-    }
+        private void OnDisable()
+        {
+            _addButton.onClick.RemoveListener(AddCoins);
+            _deleteButton.onClick.RemoveListener(DeleteCoins);
+            _leaderBoardButton.onClick.RemoveListener(ShowLeaderBoard);
+            _soundButton.onClick.RemoveListener(SwitchSound);
+            _nextLevelButton.onClick.RemoveListener(NextLevel);
+        }
 
-    private void SwitchSound()
-    {
-        _eventBus.Invoke(new SwitchMusic());
-        _eventBus.Invoke(new ClickedButton());
-    }
+        public void Initialize(IEventBus eventBus, int coins, int addCoins)
+        {
+            _eventBus = eventBus;
+            _coins = coins;
+            _addCoins = addCoins;
+            _coinsText.text = _coins.ToString();
+        }
 
-    private void ShowLeaderBoard()
-    {
-        //
-        _eventBus.Invoke(new ClickedButton());
-    }
+        private void NextLevel()
+        {
+            _eventBus.Invoke(new NextLevel());
+            _eventBus.Invoke(new ClickedButton());
+        }
 
-    private void DeleteCoins()
-    {
-        _coins = 0;
-        _coinsText.text = _coins.ToString();
-        _eventBus.Invoke(new DeleteCoins());
-        _eventBus.Invoke(new ClickedButton());
-    }
+        private void SwitchSound()
+        {
+            _eventBus.Invoke(new SwitchMusic());
+            _eventBus.Invoke(new ClickedButton());
+        }
 
-    private void AddCoins()
-    {
-        _coins += _addCoins;
-        _coinsText.text = _coins.ToString();
-        _eventBus.Invoke(new AddCoins(_coins));
-        _eventBus.Invoke(new ClickedButton());
+        private void ShowLeaderBoard()
+        {
+            //LeaderBoard
+            _eventBus.Invoke(new ClickedButton());
+            _eventBus.Invoke(new UpdateLeaderBoard(_coins));
+            _leaderBoard.gameObject.SetActive(true);
+            if(_leaderBoard.gameObject.activeInHierarchy)
+            _leaderBoard.UpdateLb();
+
+        }
+
+        private void DeleteCoins()
+        {
+            _coins = 0;
+            _coinsText.text = _coins.ToString();
+            _eventBus.Invoke(new DeleteCoins());
+            _eventBus.Invoke(new ClickedButton());
+        }
+
+        private void AddCoins()
+        {
+            _coins += _addCoins;
+            _coinsText.text = _coins.ToString();
+            _eventBus.Invoke(new AddCoins(_coins));
+            _eventBus.Invoke(new ClickedButton());
+        }
     }
 }
