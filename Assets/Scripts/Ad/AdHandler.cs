@@ -25,6 +25,7 @@ namespace Ad
         {
             YandexGame.Instance.ResetTimerFullAd();
             YandexGame.FullscreenShow();
+            _eventBus.Invoke(new PauseGame());
         }
 
         public void Dispose()

@@ -3,6 +3,7 @@ using EventsBus;
 using EventsBus.Signals;
 using Plugins.Audio.Core;
 using Plugins.Audio.Utils;
+using YG;
 
 namespace Audio
 {
@@ -26,17 +27,29 @@ namespace Audio
             PlayBackgroundMusic();
             _eventBus.Subscribe<ClickedButton>(PlaySound);
             _eventBus.Subscribe<SwitchMusic>(PlayBackgroundMusic);
+            YandexGame.OpenFullAdEvent += StopMusic;
+            YandexGame.CloseFullAdEvent += PlayMusic;
+        }
+
+        private void StopMusic()
+        {
+            _musicSource.Stop();
+        }
+
+        private void PlayMusic()
+        {
+            _musicSource.Play(_musicClip.Key);
         }
 
         private void PlayBackgroundMusic(SwitchMusic obj)
         {
             if (_onPlayMusic)
             {
-                _musicSource.Stop();
+                StopMusic();
             }
             else
             {
-                _musicSource.Play(_musicClip.Key);
+               PlayMusic();
             }
 
             _onPlayMusic = !_onPlayMusic;
@@ -50,12 +63,15 @@ namespace Audio
         private void PlayBackgroundMusic()
         {
             _onPlayMusic = true;
-            _musicSource.Play(_musicClip.Key);
+          PlayMusic();
         }
 
         public void Dispose()
         {
             _eventBus.Unsubscribe<ClickedButton>(PlaySound);
+            _eventBus.Unsubscribe<SwitchMusic>(PlayBackgroundMusic);
+            YandexGame.OpenFullAdEvent -= StopMusic;
+            YandexGame.CloseFullAdEvent -= PlayMusic;
 
         }
     }
